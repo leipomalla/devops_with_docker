@@ -1,0 +1,78 @@
+1.1 Getting started 
+
+marileipola@couteau ~ % docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+48feadea2ec8        summerwind/h2spec   "/usr/local/bin/h2sp…"   6 minutes ago       Exited (1) 6 minutes ago                       great_easley
+cb50374c37b9        nginx               "/docker-entrypoint.…"   8 minutes ago       Exited (0) 4 seconds ago                       determined_napier
+6354d824406c        dogstudio/php       "docker-php-entrypoi…"   9 minutes ago       Up 9 minutes               80/tcp, 443/tcp     gracious_solomon
+
+
+1.2 Cleanup 
+marileipola@couteau DevOps_with_docker % docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+marileipola@couteau DevOps_with_docker % 
+
+marileipola@couteau DevOps_with_docker % docker image
+
+Usage:	docker image COMMAND
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run 'docker image COMMAND --help' for more information on a command. 
+
+
+1.3 Hello Docker Hub
+ Give me the password: basics
+You found the correct password. Secret message is:
+This is the secret message
+
+1.4
+  % docker run devopsdockeruh/exec_bash_exercise
+~ % docker attach --sig-proxy=false awesome_solomon
+ ~ % docker exec -it awesome_solomon bash -f ./logs.txt
+./logs.txt: line 71: Secret: command not found
+./logs.txt: line 72: Docker is easy: command not found
+ 
+
+1.5 
+ docker run --rm -it --name dwd-1.5 ubuntu:16.04 sh -c 'apt update && apt install -y curl && echo Input website:;
+ read website; echo Searching..; sleep 1; curl http://$website
+
+
+1.6
+FROM devopsdockeruh/overwrite_cmd_exercise
+
+CMD
+
+docker build -t docker-clock .
+
+docker run docker-clock -c
+
+1.7
+Dockerfile:
+FROM ubuntu:16.04
+
+WORKDIR /mydir
+COPY file.sh .
+RUN chmod u+x file.sh
+CMD ["./file.sh"]
+
+docker build -t curler 
+docker run -it curler
+chmod +x file.sh 
+ ./file.sh 
+ apt-get update && apt-get install curl -y
